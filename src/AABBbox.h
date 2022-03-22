@@ -2,8 +2,9 @@
 #define _AABB_H_
 
 #include "Global.h"
-#include "Ray.h"
 #include <limits>
+
+class Ray;
 
 class AABBbox
 {

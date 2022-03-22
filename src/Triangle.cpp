@@ -1,4 +1,6 @@
 #include "Triangle.h"
+#include "Material.h"
+#include "Ray.h"
 
 TriMesh::TriMesh() : v1(0, 0, 0), v2(0, 0, 0), v3(0, 0, 0) {};
 
@@ -20,7 +22,7 @@ vec3d TriMesh::GetCenter()
 }
 
 //Ref: Moller Trumbore Algorithm
-bool TriMesh::JudgeIntersection(Ray& ray, double& t, vec3d& b_corrd)
+bool TriMesh::JudgeIntersection(Ray& ray, double& t, vec3d& b_corrd, vec3d& inter_p)
 {
     vec3d e1 = v2 - v1;
     vec3d e2 = v3 - v1;
@@ -33,6 +35,17 @@ bool TriMesh::JudgeIntersection(Ray& ray, double& t, vec3d& b_corrd)
     b_corrd.x() = 1 - ans.y() - ans.z();
     b_corrd.y() = ans.y();
     b_corrd.z() = ans.z();
+
+    inter_p = b_corrd.x() * v1 + b_corrd.y() * v2 + b_corrd.z() * v3;
     
     return ( ans.x() >= 0 && ans.y() >= 0 && ans.z() >= 0 && (1 - ans.y() - ans.z()) >= 0);
+}
+
+vec3d TriMesh::GetNormal()
+{
+    vec3d e12 = v2 - v1;
+    vec3d e13 = v3 - v1;
+    vec3d normal = e12.cross(e13);
+    normal.normalize();
+    return normal;
 }

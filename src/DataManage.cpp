@@ -1,13 +1,22 @@
 #include "DataManage.h"
 
+
+bool DataManage::SetSavePathByPng(const std::string filename)
+{
+    this->savepngpath = filename;
+    return 1;
+}
+
 bool DataManage::LoadDate(const std::string filename)
 {
     // Load the date from xml
     //----------------------------------------------------------------
-    std::string xmlfile, materialfile;
+    std::string xmlfile, materialfile, savepngpathfile;
     size_t dotpos = filename.find_last_of('.');
     xmlfile = filename.substr(0, dotpos) + ".xml";
     materialfile = filename.substr(0, dotpos) + ".mtl";
+    savepngpathfile = filename.substr(0, dotpos) + ".png";
+    this->SetSavePathByPng(savepngpathfile);
 
     std::cout << "xmlfile path is : " << xmlfile << '\n';
     std::cout << "materialfile path is : " << materialfile << '\n';
@@ -121,6 +130,25 @@ bool DataManage::LoadDate(const std::string filename)
         }
 
     }
+
+    // Init camera other parameters. ----------------------------------------------------------------
+    this->camera.lookAt.normalize();
+    this->camera.up.normalize();
+    this->camera.right = this->camera.lookAt.cross(this->camera.up).normalized();
+    this->camera.y_half_len = std::tan(this->camera.fovy / 2 * 3.141592654 / 180.0);
+    this->camera.x_half_len = this->camera.y_half_len * this->camera.width / this->camera.height; // x = w/h * y
+    this->camera.leftlowercorner =  this->camera.position + 
+                                    this->camera.lookAt - 
+                                    this->camera.right * this->camera.x_half_len - 
+                                    this->camera.up * this->camera.y_half_len;
+    this->camera.x_axis_normal = 2 * this->camera.right * this->camera.x_half_len;
+    this->camera.y_axis_normal = 2 * this->camera.up * this->camera.y_half_len;
+
+    // ------------------------------------------------------------------------------------------------
+
+    this->RGB_framebuffer.resize( this->camera.height, std::vector<vec3d>(this->camera.width, vec3d(0.0, 0.0, 0.0)) );
+
+
     std::cout << "Parse " << xmlfile << " Finish.\n";
 
     std::string err = tinyobj::LoadObj(this->tiny_shapes, this->tiny_materials, filename.c_str(), materialfile.c_str());
@@ -202,6 +230,7 @@ bool DataManage::LoadDate(const std::string filename)
 
             tri.InitBox();
             this->tri_lst.push_back(tri);
+            if(tri.material->Ke != vec3d(0, 0, 0)) this->tri_light_lst.push_back(tri);
         }
     }
     std::cout << "Parse " << filename << " Finish.\n";
@@ -210,4 +239,12 @@ bool DataManage::LoadDate(const std::string filename)
     this->kdtree.BuildKdTree(this->tri_lst, 0);
     std::cout << "Build KdTree Finish.\n";
     return 1;
+}
+
+DataManage::~DataManage()
+{
+    for(int i = 0; i < this->material_lst.size(); i++)
+    {
+        delete this->material_lst[i];
+    }
 }

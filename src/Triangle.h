@@ -2,8 +2,11 @@
 #define _TRIANGEN_H_
 
 #include "Global.h"
-#include "Material.h"
 #include "AABBbox.h"
+
+class Material;
+class Ray;
+class AABBbox;
 
 class TriMesh{
 
@@ -18,7 +21,8 @@ public:
     bool InitBox();
     AABBbox GetBox();
     vec3d GetCenter();
-    bool JudgeIntersection(Ray& ray, double& t, vec3d& b_corrd);
+    vec3d GetNormal();
+    bool JudgeIntersection(Ray& ray, double& t, vec3d& b_corrd, vec3d& inter_p);
 };
 
 

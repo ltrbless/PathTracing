@@ -1,4 +1,5 @@
 #include "AABBbox.h"
+#include "Ray.h"
 
 AABBbox::AABBbox()
 {

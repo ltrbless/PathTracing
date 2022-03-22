@@ -22,6 +22,7 @@ public:
     std::vector<tinyobj::material_t> tiny_materials;
 
     std::vector<TriMesh> tri_lst;
+    std::vector<TriMesh> tri_light_lst;
 
     std::vector<Material*> material_lst;
     std::map<std::string, Material*> mp_materials;
@@ -29,8 +30,15 @@ public:
 
     KdTree kdtree;    
 
+    std::vector<std::vector<vec3d>> RGB_framebuffer;
+
+    std::string savepngpath;
+
     //---------------------------- function --------------------------------
     bool LoadDate(const std::string filename);
+    bool SetSavePathByPng(const std::string filename);
+
+    ~DataManage();
 
 
 };

@@ -3,6 +3,8 @@
 
 #include <string>
 #include <iostream>
+#include "Global.h"
+// #include "stb_image.h"
 
 class Texture{
 

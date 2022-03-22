@@ -57,13 +57,16 @@ void KdTree::GetIntersection(Ray& ray)
         {
             double t;
             vec3d b_corrd;
-            if(this->tri_lst[i].JudgeIntersection(ray, t, b_corrd))
+            vec3d inter_p;
+            if(this->tri_lst[i].JudgeIntersection(ray, t, b_corrd, inter_p))
             {
                 if(t < ray.t)
                 {
                     ray.t = t;
                     ray.b_corrd = b_corrd;
+                    ray.inter_point = inter_p;
                     ray.tri = this->tri_lst[i];
+                    ray.bool_intersection = true;
                 }
             }
         }

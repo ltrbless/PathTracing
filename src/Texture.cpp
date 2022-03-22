@@ -1,8 +1,9 @@
 #include "Texture.h"
 
+#ifndef STB_IMAGE_IMPLEMENTATION
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
-
+#endif
 
 bool Texture::LoadTexture(std::string filename)
 {
