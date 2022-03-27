@@ -1,6 +1,7 @@
 #include "Triangle.h"
 #include "Material.h"
 #include "Ray.h"
+#include "tool.h"
 
 TriMesh::TriMesh() : v1(0, 0, 0), v2(0, 0, 0), v3(0, 0, 0) {};
 
@@ -13,12 +14,33 @@ bool TriMesh::InitBox()
 
 AABBbox TriMesh::GetBox()
 {
+    // InitBox();
     return this->box;
 }
 
 vec3d TriMesh::GetCenter()
 {
     return (v1 + v2 + v3) / 3.0;
+}
+
+vec3d TriMesh::GetRandomPoint()
+{
+    double a, b, c, sum;
+    a = tool::GetUniformRandomDouble(0, 1);
+    b = tool::GetUniformRandomDouble(0, 1);
+    c = tool::GetUniformRandomDouble(0, 1);
+    sum = a + b + c;
+    a /= sum;
+    b /= sum;
+    c = 1 - a - b;
+    return v1 * a + v2 * b + v3 * c;
+}
+
+double TriMesh::GetArea()
+{
+    vec3d e1 = v2 - v1;
+    vec3d e2 = v3 - v1;
+    return e1.cross(e2).norm() / 2;
 }
 
 //Ref: Moller Trumbore Algorithm

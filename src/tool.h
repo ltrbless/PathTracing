@@ -27,7 +27,13 @@ inline void AddProcessBar(int ind, int h)
     std::cout.flush();
 }
 
+inline void CoutVec3d(vec3d a){
+    std::cout << a.x() << " " << a.y() << " " << a.z() << "\n";
 }
 
+inline float clamp(const float &lo, const float &hi, const float &v)
+{ return std::max(lo, std::min(hi, v)); }
+
+}
 
 #endif // tool.h

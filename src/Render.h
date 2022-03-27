@@ -2,8 +2,8 @@
 #define _RENDER_H_
 
 #include "DataManage.h"
+#include "tool.h"
 #include "Global.h"
-#include <windows.h>
 
 class Render{
 
@@ -23,6 +23,7 @@ public:
     void RunRender(int ssp, std::string savepath);
     vec3d PathTracing(Ray& ray, int deep);
     Ray SampleRay(Ray& ray);
+    double power(double x, int y);
     vec3d ImportanceSampling(SampleType stype, vec3d direction, double Ns);
 
 };

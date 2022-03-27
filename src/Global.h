@@ -2,6 +2,7 @@
 #define _GLOBAL_H_
 
 #include "Eigen/Dense"
+#include <algorithm>
 
 typedef Eigen::Vector3d vec3d;
 typedef Eigen::Vector2d vec2d;

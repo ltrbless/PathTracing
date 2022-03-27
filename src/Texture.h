@@ -11,6 +11,7 @@ class Texture{
 public:
 
 
+    std::string filename;
     int width;
     int height;
     int channels; // [1 - 4]

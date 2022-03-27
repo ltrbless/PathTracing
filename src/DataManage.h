@@ -1,6 +1,7 @@
 #ifndef _DATA_MANAGE_H_
 #define _DATA_MANAGE_H_
 
+#define TINYOBJLOADER_IMPLEMENTATION
 #include "tiny_obj_loader.h"
 #include "pugixml.hpp"
 
@@ -8,6 +9,7 @@
 #include "Triangle.h"
 #include "KdTree.h"
 #include "Material.h"
+#include "TriGroup.h"
 
 #include <string>
 #include <map>
@@ -24,6 +26,9 @@ public:
     std::vector<TriMesh> tri_lst;
     std::vector<TriMesh> tri_light_lst;
 
+    std::vector<std::vector<TriMesh>> light_group_lst; 
+    std::vector<double> light_group_area_lst;
+
     std::vector<Material*> material_lst;
     std::map<std::string, Material*> mp_materials;
     std::map<std::string, vec3d> mp_lights;
@@ -37,6 +42,7 @@ public:
     //---------------------------- function --------------------------------
     bool LoadDate(const std::string filename);
     bool SetSavePathByPng(const std::string filename);
+    // bool GetIntersection(Ray& ray);
 
     ~DataManage();
 

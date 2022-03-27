@@ -28,6 +28,7 @@
 #include <map>
 #include <fstream>
 #include <sstream>
+#include <iostream>
 
 #include "tiny_obj_loader.h"
 
@@ -513,7 +514,6 @@ LoadObj(
   
   return LoadObj(shapes, materials, ifs, matFileReader);
 }
-
 std::string LoadObj(
   std::vector<shape_t>& shapes,
   std::vector<material_t>& materials,   // [output]
@@ -654,11 +654,13 @@ std::string LoadObj(
     }
 
     // group name
-    if (token[0] == 'g' && isSpace((token[1]))) {
+    if (token[0] == 'g'){ //&& isSpace((token[1]))) { // add by ltr
+      // std::cout << "This is a group \n";
 
       // flush previous face group.
       bool ret = exportFaceGroupToShape(shape, vertexCache, v, vn, vt, faceGroup, material, name, true);
       if (ret) {
+        // std::cout << "Group in shapes \n";
         shapes.push_back(shape);
       }
 

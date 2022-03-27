@@ -34,6 +34,10 @@ public:
     Ray(vec3d o, vec3d d, RayType type) : origin(o), direction(d), raytype(type), t( std::numeric_limits<double>::max()), bool_intersection(false){};
 
     static vec3d RayTrace(Ray& ray);
+    void clear(){
+        t = std::numeric_limits<double>::max();
+        bool_intersection = false;
+    }
 
 };
 

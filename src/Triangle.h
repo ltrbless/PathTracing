@@ -16,12 +16,15 @@ public:
 
     Material* material;
     AABBbox box;
+    int id;
 
     TriMesh();
     bool InitBox();
     AABBbox GetBox();
     vec3d GetCenter();
+    vec3d GetRandomPoint();
     vec3d GetNormal();
+    double GetArea();
     bool JudgeIntersection(Ray& ray, double& t, vec3d& b_corrd, vec3d& inter_p);
 };
 

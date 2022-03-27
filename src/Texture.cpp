@@ -7,6 +7,7 @@
 
 bool Texture::LoadTexture(std::string filename)
 {
+    this->filename = filename;
     this->data = stbi_load(filename.c_str(), &this->width, &this->height, &this->channels, 0);
     if(this->data == nullptr)
     {
