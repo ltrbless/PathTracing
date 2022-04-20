@@ -5,7 +5,7 @@ int KdTree::all_node = 0;
 void KdTree::BuildKdTree(std::vector<TriMesh>& tri_lsts, int deep)
 {
     KdTree::all_node++;
-    if(tri_lsts.size() < 5 || deep == 0)
+    if(tri_lsts.size() < 5 || deep == 10)
     {
         for(int i = 0; i < tri_lsts.size(); i++) 
         {
@@ -123,7 +123,7 @@ void KdTree::GetIntersection(Ray& ray)
 {
     double t_min;
     bool b_intersection = this->box.JudgeIntersection(ray, t_min);
-    if(!b_intersection || ray.t <= t_min) return ;
+    if(!b_intersection) return ;
 
     if(this->leaf == true)
     {

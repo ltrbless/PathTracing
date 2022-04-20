@@ -183,10 +183,11 @@ bool DataManage::LoadDate(const std::string filename)
         Material* tmp_m = new Material();
         tmp_m->name = tiny_materials[i].name;
         if(!tiny_materials[i].diffuse_texname.empty()){
-            tmp_m->mp_kd.LoadTexture(tiny_materials[i].diffuse_texname);
+            tmp_m->mp_kd.LoadTexture(materialpth + tiny_materials[i].diffuse_texname);
         }
         else{
             tmp_m->mp_kd.filename = "no texture";
+            tmp_m->mp_kd.data = nullptr;
         }
         tmp_m->Kd = vec3d(tiny_materials[i].diffuse[0], tiny_materials[i].diffuse[1], tiny_materials[i].diffuse[2]);
         tmp_m->Ks = vec3d(tiny_materials[i].specular[0], tiny_materials[i].specular[1], tiny_materials[i].specular[2]);

@@ -22,6 +22,7 @@ public:
     bool InitBox();
     AABBbox GetBox();
     vec3d GetCenter();
+    vec2d GetTextureCorrd(vec3d b_corrd);
     vec3d GetRandomPoint();
     vec3d GetNormal();
     double GetArea();

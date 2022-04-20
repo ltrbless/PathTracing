@@ -19,6 +19,7 @@ public:
     Texture() : width(0), height(0), channels(0), data(nullptr) {};
 
     bool LoadTexture(std::string filename);
+    vec3d GetTexture(vec2d uv);
 
 
 };

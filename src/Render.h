@@ -24,7 +24,7 @@ public:
     vec3d PathTracing(Ray& ray, int deep);
     Ray SampleRay(Ray& ray);
     double power(double x, int y);
-    vec3d ImportanceSampling(SampleType stype, vec3d direction, double Ns);
+    vec3d Sampling(SampleType stype, vec3d direction, double Ns);
 
 };
 

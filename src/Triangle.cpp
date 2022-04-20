@@ -71,3 +71,8 @@ vec3d TriMesh::GetNormal()
     normal.normalize();
     return normal;
 }
+
+vec2d TriMesh::GetTextureCorrd(vec3d b_corrd)
+{
+    return this->t1 * b_corrd.x() + this->t2 * b_corrd.y() + this->t3 * b_corrd.z();
+}

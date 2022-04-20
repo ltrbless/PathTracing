@@ -32,7 +32,6 @@ bool AABBbox::JudgeIntersection(Ray& ray, double& t)
     t_min = 100000000;
     t_max = -100000000;
     
-
     // x axis
     for(int i = 0; i < 3; i++)
     {
