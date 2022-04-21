@@ -6,27 +6,6 @@
 #include <chrono>
 
 
-// #define TEST1
-#ifdef TEST1
-
-int main(int argc, char **argv)
-{
-    AABBbox box;
-    box.minn = vec3d(0.0, 0.0, 0.0);
-    box.maxx = vec3d(1, 1, 1);
-
-    Ray ray;
-    ray.origin = vec3d(-0.5, -0.5, 0.5);
-    ray.direction = vec3d(1, 1, 0);
-    ray.direction.normalize();
-
-    double dis;
-    bool b = box.JudgeIntersection(ray, dis);
-
-    std::cout << b << " " << dis << std::endl;
-    return 0;
-}
-#endif
 
 #define MAIN
 #ifdef MAIN
@@ -35,7 +14,9 @@ int main(int argc, char **argv)
     DataManage DM;
 
     auto start = std::chrono::system_clock::now();
-    DM.LoadDate("../file/bedroom/bedroom.obj");
+    // DM.LoadDate("../file/bedroom/bedroom.obj");
+    // DM.LoadDate("../file/my/rv_table_with_vase.obj");
+    DM.LoadDate("../file/my2/warrior.obj");
     // DM.LoadDate("../file/cornell-box/cornell-box.obj");
     // DM.LoadDate("../file/veach-mis/veach-mis.obj");
     auto stop = std::chrono::system_clock::now();
@@ -49,12 +30,12 @@ int main(int argc, char **argv)
     std::cout << "\nCamera base attributes : " << "\n";
     std::cout << DM.camera << std::endl;
 
-    // std::cout << "\nAll material type : " << "\n";
-    // for(int i = 0; i < DM.material_lst.size(); i++)
-    // {
-    //     std::cout << "==============   material " << i << "   ================\n";
-    //     std::cout << *(DM.material_lst[i]) << "\n";
-    // }
+    std::cout << "\nAll material type : " << "\n";
+    for(int i = 0; i < DM.material_lst.size(); i++)
+    {
+        std::cout << "==============   material " << i << "   ================\n";
+        std::cout << *(DM.material_lst[i]) << "\n";
+    }
 
     Render render(DM);
     double ssp = 1;

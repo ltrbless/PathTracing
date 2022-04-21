@@ -18,10 +18,8 @@ void Render::RunRender(int ssp)
 {
     std::cout << "Render ssp is : " << ssp << "\n";
     std::cout << "light facet number is : " << DM.tri_light_lst.size() << "\n";
-    // for(int j = 1, k = 1; k ; k = 0)
     for(int j = 1; j < DM.camera.height; j++)
     {
-        // for(int i = 200, k2 = 1; k2; k2 = 0)
         int procsNum = omp_get_num_procs();
         #pragma omp parallel for num_threads(2 * procsNum - 1)
         for(int i = 0; i < DM.camera.width; i++)
@@ -39,9 +37,6 @@ void Render::RunRender(int ssp)
             DM.RGB_framebuffer[j][i] = DM.RGB_framebuffer[j][i].cwiseMax(vec3d(0, 0, 0));
             DM.RGB_framebuffer[j][i] = DM.RGB_framebuffer[j][i].cwiseMin(vec3d(1, 1, 1));
             DM.RGB_framebuffer[j][i] = vec3d(sqrt(DM.RGB_framebuffer[j][i].x()), sqrt(DM.RGB_framebuffer[j][i].y()), sqrt(DM.RGB_framebuffer[j][i].z()));
-            // std::cout << "j = " << j << " i = " << i << "  " << DM.RGB_framebuffer[j][i].x() << " " << DM.RGB_framebuffer[j][i].y() << " " << DM.RGB_framebuffer[j][i].z() << "\n";
-            // DM.RGB_framebuffer[j][i] = DM.RGB_framebuffer[j][i].sqrt(); // gamma fixed
-            // std::cout << "here\n";
         }
         // view process 
         tool::AddProcessBar(j, DM.camera.height); 
@@ -82,6 +77,7 @@ Ray Render::SampleRay(Ray& ray)
 {
     // Refraction ----------------------------------------------------------------
 
+    // Segement fault 
     // if(ray.tri.material->Ni > 1.0) // happen refraction
     // {
     //     Ray refractionRay;
