@@ -1,3 +1,0 @@
-/home/ltr/workplace/CG_HW_02/Code/rbuild/CMakeFiles/rebuild_cache.dir
-/home/ltr/workplace/CG_HW_02/Code/rbuild/CMakeFiles/CG_Render.dir
-/home/ltr/workplace/CG_HW_02/Code/rbuild/CMakeFiles/edit_cache.dir
