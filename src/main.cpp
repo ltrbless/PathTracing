@@ -14,10 +14,10 @@ int main(int argc, char **argv)
     DataManage DM;
 
     auto start = std::chrono::system_clock::now();
-    // DM.LoadDate("../file/bedroom/bedroom.obj");
+    // DM.LoadDate("/home/ltr/workplace/CG_HW_02/Code/file/bedroom/bedroom.obj");
     // DM.LoadDate("../file/my/rv_table_with_vase.obj");
-    DM.LoadDate("../file/my2/warrior.obj");
-    // DM.LoadDate("../file/cornell-box/cornell-box.obj");
+    // DM.LoadDate("../file/my2/warrior.obj");
+    DM.LoadDate("../file/cornell-box/cornell-box.obj");
     // DM.LoadDate("../file/veach-mis/veach-mis.obj");
     auto stop = std::chrono::system_clock::now();
     std::cout << "Load Data Time : " << 
@@ -38,7 +38,7 @@ int main(int argc, char **argv)
     }
 
     Render render(DM);
-    double ssp = 1;
+    double ssp = 10;
     start = std::chrono::system_clock::now();
     render.RunRender(ssp);
     stop = std::chrono::system_clock::now();

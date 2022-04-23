@@ -1,0 +1,97 @@
+nohup: ignoring input
+
+
+------------------------------------------------------------------------------------------------
+-------------------------------   CG Path Tracing Render   -------------------------------------
+------------------------------------------------------------------------------------------------
+
+xmlfile path is : ../file/cornell-box/cornell-box.xml
+materialfile path is : ../file/cornell-box/cornell-box.mtl
+Parse ../file/cornell-box/cornell-box.xml ...
+Parse ../file/cornell-box/cornell-box.xml Finish.
+Parse ../file/cornell-box/cornell-box.mtl ...
+Success load texture : ../file/cornell-box/cherry-wood-texture.jpg width is : 1280   height is : 1024
+Parse ../file/cornell-box/cornell-box.mtl Finish.
+Parse ../file/cornell-box/cornell-box.obj ...
+Object number is : 7
+Parse ../file/cornell-box/cornell-box.obj Finish.
+The number of material is : 7
+The number of tri mesh : 15056
+Build KdTree ing ...
+Build KdTree Finish.
+Load Data Time : 0 h 0 m 0 s
+KdTree node number is : 1990
+
+Camera base attributes : 
+eye_position : 0 1 6.8 
+eye_front   : 0 0 -1 
+eye_up       : 0 1 0 
+eye_right       : 1 -0 0 
+fovy         : 19.5 
+width        : 1024 
+height       : 1024 
+
+
+All material type : 
+==============   material 0   ================
+Name is : LeftWall
+Kd is   : 0.63 0.065 0.05
+Ks is   : 0 0 0
+Ke is   : 0 0 0
+Ns is   : 1
+Ni is   : 1
+mpkd is : no texture
+
+==============   material 1   ================
+Name is : RightWall
+Kd is   : 0.14 0.091 0.45
+Ks is   : 0 0 0
+Ke is   : 0 0 0
+Ns is   : 1
+Ni is   : 1
+mpkd is : no texture
+
+==============   material 2   ================
+Name is : Floor
+Kd is   : 0.8 0.8 0.8
+Ks is   : 0 0 0
+Ke is   : 0 0 0
+Ns is   : 1
+Ni is   : 1
+mpkd is : no texture
+
+==============   material 3   ================
+Name is : Ceiling
+Kd is   : 0.8 0.8 0.8
+Ks is   : 0 0 0
+Ke is   : 0 0 0
+Ns is   : 1
+Ni is   : 1
+mpkd is : no texture
+
+==============   material 4   ================
+Name is : BackWall
+Kd is   : 0.8 0.8 0.8
+Ks is   : 0 0 0
+Ke is   : 0 0 0
+Ns is   : 1
+Ni is   : 1
+mpkd is : no texture
+
+==============   material 5   ================
+Name is : Light
+Kd is   : 0 0 0
+Ks is   : 0 0 0
+Ke is   : 17 12 4
+Ns is   : 1
+Ni is   : 1
+mpkd is : no texture
+
+==============   material 6   ================
+Name is : Table
+Kd is   : 0 0 0
+Ks is   : 0 0 0
+Ke is   : 0 0 0
+Ns is   : 1
+Ni is   : 1
+mpkd is : ../file/cornell-box/cherry-wood-texture.jpg

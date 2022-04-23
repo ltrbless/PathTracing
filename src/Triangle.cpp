@@ -8,7 +8,9 @@ TriMesh::TriMesh() : v1(0, 0, 0), v2(0, 0, 0), v3(0, 0, 0) {};
 bool TriMesh::InitBox()
 {
     this->box.minn = v1.cwiseMin(v2).cwiseMin(v3);
+    this->box.minn -= vec3d(0.0001, 0.0001, 0.0001);
     this->box.maxx = v1.cwiseMax(v2).cwiseMax(v3);
+    this->box.maxx += vec3d(0.0001, 0.0001, 0.0001);
     return 1;
 }
 

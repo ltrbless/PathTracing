@@ -29,8 +29,8 @@ int AABBbox::GetLongestAxis()
 bool AABBbox::JudgeIntersection(Ray& ray, double& t)
 {
     double t_min, t_max;
-    t_min = 100000000;
-    t_max = -100000000;
+    t_min = -100000000;
+    t_max = 100000000;
     
     // x axis
     for(int i = 0; i < 3; i++)
@@ -44,9 +44,8 @@ bool AABBbox::JudgeIntersection(Ray& ray, double& t)
             double tmp_min = (this->minn(i) - ray.origin(i)) / ray.direction(i);
             double tmp_max = (this->maxx(i) - ray.origin(i)) / ray.direction(i);
             if(tmp_min > tmp_max) std::swap(tmp_min, tmp_max);
-            if(t_min > tmp_min) t_min = tmp_min;
-            if(t_max < tmp_max) t_max = tmp_max;
-            if(t_min > t_max) return false;
+            t_min = std::max(t_min, tmp_min);
+            t_max = std::min(t_max, tmp_max);
         }
     }
     if(t_min > 0) t = t_min;

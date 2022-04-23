@@ -24,6 +24,8 @@ bool Texture::LoadTexture(std::string filename)
 // Reference : Bilinear Interpolation
 vec3d Texture::GetTexture(vec2d uv)
 {
+    uv.x() = fabs(uv.x());
+    uv.y() = fabs(uv.y());
     if(uv.x() > 1.0) uv.x() -= int(uv.x());
     if(uv.y() > 1.0) uv.y() -= int(uv.y());
 
